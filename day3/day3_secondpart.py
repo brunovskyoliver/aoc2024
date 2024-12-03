@@ -9,6 +9,7 @@ bigone = ""
 for i in range(len(lines)):
     bigone += lines[i]
 status = True
+first = True
 
 while len(bigone) > 0:
     do_index = bigone.find("do()")
@@ -21,13 +22,14 @@ while len(bigone) > 0:
             bigone = bigone[do_index + len("do()"):]
         elif dont_index != -1:
             status = False
+            first = False
             bigone = bigone[dont_index + len("don't()"):]
     elif index != -1:
         bigone = bigone[index:]
         opening = bigone.find("(")
         closing = bigone.find(")")
         inside = bigone[opening + 1:closing]
-        if not " {}[]&^%$@#" in inside and closing - opening <= 8 and status:
+        if not " {}[]&^%$@#" in inside and closing - opening <= 8 and (status or first):
             print(f"im inside of {bigone[do_index:closing+1]} with inside of {inside}")
             comma = inside.find(",")
             if 0 < comma < closing:
