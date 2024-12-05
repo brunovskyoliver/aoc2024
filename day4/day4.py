@@ -6,25 +6,7 @@ with open(filename) as file:
 
 sum = 0
 
-def bigones(l):
-    diagonals = []
-    for col in range(len(l[0])):
-        diagonal = []
-        x, y = 0, col
-        while x < len(l) and y < len(l[0]):
-            diagonal.append(l[x][y])
-            x += 1
-            y += 1
-        diagonals.append("".join(diagonal))
-    for row in range(1, len(l)):
-        diagonal = []
-        x, y = row, 0
-        while x < len(l) and y < len(l[0]):
-            diagonal.append(l[x][y])
-            x += 1
-            y += 1
-        diagonals.append("".join(diagonal))
-    return diagonals
+ 
 
 def smallones(l):
     diagonals = []
